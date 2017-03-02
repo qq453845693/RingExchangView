@@ -96,7 +96,7 @@ UICollectionViewDelegateFlowLayout>
 {
     if (self.tapBlock)
     {
-        self.tapBlock(indexPath.item);
+        self.tapBlock(indexPath.item % self.dataArray.count);
     }
 }
 

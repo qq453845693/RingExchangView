@@ -32,13 +32,17 @@ UITableViewDataSource>
     
     LYTTopExhangeView *topView = [[LYTTopExhangeView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     topView.dataArray = @[@"favorite_bgView",@"favorite_bgView",@"favorite_bgView",@"favorite_bgView"];
+    // index从0开始
+    topView.tapBlock = ^(NSInteger index){
+        NSLog(@"这是第%ld张图片",index);
+    };
     self.topView = topView;
     tableView.tableHeaderView = topView;
 }
 
 - (void)refreshAction:(id)send
 {
-    self.topView.dataArray = @[@"favorite_bgView",@"favorite_bgView"];
+    self.topView.dataArray = @[@"1",@"2",@"1",@"favorite_bgView",@"1"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -53,7 +57,7 @@ UITableViewDataSource>
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"table"];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"第%ld",indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"第%ld条数据",indexPath.row];
     return cell;
 }
 
